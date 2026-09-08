@@ -1,20 +1,23 @@
 <?php
 
-class Car {
-    private int $numberOfWheels;
-    private int $currentSpeed;
-    private string $color;
-    private int $numberOfSeats;
+
+require_once 'Vehicle.php';
+
+class Car extends Vehicle {
+
+public const ALLOWED_ENERGIES = [
+    'fuel',
+    'electric',
+];
+   
     private string $energyType;
     private int $currentEnergyLevel;
 
     public function __construct(string $color, int $numberOfSeats, string $energyType) 
     {
-        $this->numberOfWheels = 4;
-        $this->currentSpeed = 0;
-        $this->color = $color;
-        $this->numberOfSeats = $numberOfSeats;
-        $this->energyType = $energyType;
+       parent::__construct($color, $numberOfSeats);
+
+        $this->setEnergy($energyType);
         $this->currentEnergyLevel = 100;
     }
 
@@ -28,29 +31,11 @@ class Car {
         $this->currentSpeed += 10;
     }
 
-    public function brake ()
-    {
-        $this->currentSpeed -= 10;
+    public function setEnergy(string $energy): Car
+    {   if (in_array($energy, self::ALLOWED_ENERGIES)) {
+        $this->energyType = $energy;
     }
-
-    public function getNumberOfWheels(): int
-    {
-        return $this->numberOfWheels;
-    }
-
-    public function getCurrentSpeed(): int 
-    {
-        return $this->currentSpeed;
-    }
-
-    public function getColor(): string
-    {
-        return $this->color;
-    }
-
-    public function getNumberOfSeats(): int 
-    {
-        return $this->numberOfSeats;
+        return $this;
     }
 
     public function getEnergyType(): string 
