@@ -12,6 +12,7 @@ public const ALLOWED_ENERGIES = [
    
     private string $energyType;
     private int $currentEnergyLevel;
+    private bool $hasParkBrake;
 
     public function __construct(string $color, int $numberOfSeats, string $energyType) 
     {
@@ -19,10 +20,19 @@ public const ALLOWED_ENERGIES = [
 
         $this->setEnergy($energyType);
         $this->currentEnergyLevel = 100;
+        $this->hasParkBrake = true;
     }
 
-    public function start ()
+    public function setParkBrake(bool $parkBrake): void
     {
+        $this->hasParkBrake = $parkBrake;
+    }
+
+    public function start (): void 
+    {
+        if($this->hasParkBrake) {
+            throw new Exception('Le frein à main est activé');
+        }
         $this->currentSpeed = 0;
     }
 
