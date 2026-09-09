@@ -4,11 +4,14 @@ require_once 'Bicycle.php';
 
     $bike = new Bicycle('blue', 1);
 
+        
         var_dump($bike);
 
         echo $bike->forward();
+        var_dump($bike->switchOn());
         echo '<br> Vitesse du vélo : ' . $bike->getCurrentSpeed() . ' km/h' . '<br>';
         echo $bike->brake();
+        var_dump($bike->switchOff());
         echo '<br> Vitesse du vélo : ' . $bike->getCurrentSpeed() . ' km/h' . '<br>';
         echo $bike->brake();
 
