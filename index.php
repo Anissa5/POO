@@ -18,7 +18,16 @@ require_once 'car.php';
 
     $car = new Car('red', 5, 'fuel');
 
-    $car->start();
+    try {
+        $car->start();
+    }
+    catch(Exception $e) {
+        $car->setParkBrake(false);
+    }
+    finally {
+        echo 'Ma voiture roule comme un donut';
+    }
+    
     $car->accelerate();
 
         echo $car->getCurrentSpeed() . '<br>';
