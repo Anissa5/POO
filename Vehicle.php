@@ -13,6 +13,7 @@ class Vehicle
     {
         $this->color = $color;
         $this->nbSeats = $nbSeats;
+        $this->currentSpeed = 0;
     }
 
     public function forward(): string
