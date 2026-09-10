@@ -104,3 +104,14 @@ require_once 'Speedometer.php';
         echo Speedometer::convertKmToMiles(10) . '<br>';
         echo Speedometer::convertMilesToKm(10);
 
+require_once 'Personne.php';
+
+    $personne = new Personne("Lopez", "Jennifer", "Paris", "1990-01-10");
+
+        var_dump($personne->getNom());
+
+    $personne->setNom("Lobes");
+
+        var_dump($personne->getNom());
+
+        var_dump($personne->getAge());
